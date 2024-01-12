@@ -192,5 +192,6 @@ static void subArray({required List<int> listOfNumber}) {
   print('Smallest is: $smallestNumber');
 }
 
+
  
 }
