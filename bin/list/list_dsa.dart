@@ -1,16 +1,16 @@
 class ListDsa {
   /// Finds the largest number in a given list of doubles.
   /// Returns double.minPositive if the list is empty.
-  double largestNumberInList({required List<double> listOfNumbers}) {
+  double largestNumberInList({required List<double> listOfNumber}) {
     // Initialize the largestNumber with the smallest positive double value
     double largestNumber = double.minPositive;
 
     // Iterate through the list to find the largest number
-    for (var i = 0; i < listOfNumbers.length; i++) {
+    for (var i = 0; i < listOfNumber.length; i++) {
       // Check if the current element is larger than the current largestNumber
-      if (largestNumber < listOfNumbers[i]) {
+      if (largestNumber < listOfNumber[i]) {
         // Update the largestNumber if the current element is larger
-        largestNumber = listOfNumbers[i];
+        largestNumber = listOfNumber[i];
       }
     }
 
@@ -20,16 +20,16 @@ class ListDsa {
 
   /// Finds the smallest number in a given list of doubles.
   /// Returns double.infinity if the list is empty.
-  double smallestNumberInList({required List<double> listOfNumbers}) {
+  double smallestNumberInList({required List<double> listOfNumber}) {
     // Initialize the smallestNumber with positive infinity
     double smallestNumber = double.infinity;
 
     // Iterate through the list to find the smallest number
-    for (var i = 0; i < listOfNumbers.length; i++) {
+    for (var i = 0; i < listOfNumber.length; i++) {
       // Check if the current element is smaller than the current smallestNumber
-      if (smallestNumber > listOfNumbers[i]) {
+      if (smallestNumber > listOfNumber[i]) {
         // Update the smallestNumber if the current element is smaller
-        smallestNumber = listOfNumbers[i];
+        smallestNumber = listOfNumber[i];
       }
     }
 
@@ -89,4 +89,108 @@ class ListDsa {
       end--;
     }
   }
+
+  /// Prints all pairs of integers in the given list.
+  ///
+  /// For each element at index i, this function prints pairs with all elements
+  /// at indices greater than i.
+  /// @param [listOfNumber] The list of integers.
+  /// Example:
+  /// If the input list is [1, 2, 3], the output will be:
+  /// (1, 2)
+  /// (1, 3)
+  /// (2, 3)
+  ///
+  /// Note: This function assumes the list contains integers.
+  static void printPairs({required List<int> listOfNumber}) {
+    // Outer loop iterates through each element in the list
+    for (var i = 0; i < listOfNumber.length; i++) {
+      int currentNumber = listOfNumber[i];
+
+      // Inner loop iterates through elements with higher indices than i
+      for (var j = i + 1; j < listOfNumber.length; j++) {
+        // Print the pair (currentNumber, listOfNumber[j])
+        print('($currentNumber, ${listOfNumber[j]})');
+      }
+    }
+  }
+
+/// Prints all possible subArrays of the given list, calculates their sum,
+/// and identifies the smallest and largest sums.
+///
+/// For each element at index i, this function prints subArrays
+/// starting from that index and extending to the end of the list.
+/// Additionally, it calculates and prints the sum of each subArray,
+/// and identifies the smallest and largest sums.
+///
+/// Example:
+/// If the input list is [1, 2, 3], the output will be:
+/// 1
+/// Sum is: 1
+///
+/// 1 2
+/// Sum is: 3
+///
+/// 1 2 3
+/// Sum is: 6
+///
+/// 2
+/// Sum is: 2
+///
+/// 2 3
+/// Sum is: 5
+///
+/// 3
+/// Sum is: 3
+///
+/// Largest is: 6
+/// Smallest is: 1
+///
+/// @param [listOfNumber] The list of integers.
+static void subArray({required List<int> listOfNumber}) {
+  // Initialize variables for sum, smallest, and largest
+  int sumIs = 0;
+  double smallestNumber = double.maxFinite;
+  double largestNumber = double.minPositive;
+
+  // Outer loop iterates through each element in the list
+  for (int i = 0; i < listOfNumber.length; i++) {
+    int start = i;
+
+    // Middle loop determines the end index for the subArray
+    for (int j = i; j < listOfNumber.length; j++) {
+      int end = j;
+
+      // Inner loop prints the elements in the subArray
+      for (int k = start; k <= end; k++) {
+        // Print the element
+        sumIs = sumIs + listOfNumber[k];
+        print(listOfNumber[k]);
+      }
+
+      // Print the sum of the subArray
+      print('Sum is: $sumIs');
+
+      // Update smallest and largest sums
+      if (sumIs > largestNumber) {
+        largestNumber = sumIs.toDouble();
+      }
+      if (sumIs < smallestNumber) {
+        smallestNumber = sumIs.toDouble();
+      }
+
+      // Reset sum for the next subArray
+      sumIs = 0;
+
+      // Print a newline after each subArray
+      print('');
+    }
+  }
+
+  // Print the overall largest and smallest sums
+  print('Largest is: $largestNumber');
+  print('Smallest is: $smallestNumber');
+}
+
+ 
 }
