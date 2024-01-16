@@ -31,4 +31,29 @@ class Shorting {
     }
     print(listOfInt);
   }
+
+  static void insertionSort({required List<int> listOfOInt}) {
+    // Outer loop iterates through the entire list
+    for (var i = 0; i < listOfOInt.length - 1; i++) {
+      // Assume the current index is the minimum value
+      int minValue = i;
+
+      // Inner loop finds the index of the minimum value in the unsorted portion
+      for (var j = i + 1; j < listOfOInt.length; j++) {
+        if (listOfOInt[minValue] > listOfOInt[j]) {
+          // Update minValue if a smaller element is found
+          minValue = j;
+        }
+      }
+
+      // Swap the minimum value with the first unsorted element
+      int temp = listOfOInt[minValue];
+      listOfOInt[minValue] = listOfOInt[i];
+      listOfOInt[i] = temp;
+    }
+
+    // Print the sorted list to the console
+    print(listOfOInt);
+  }
 }
+//[1,2,3,4,5,]

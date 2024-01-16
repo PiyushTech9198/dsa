@@ -3,5 +3,5 @@ import 'shorting/shorting.dart';
 
 void main() {
   List<int> numbers = [4, 2, 7, 1, 9];
-  Shorting.bubbleSort(listOfInt: numbers);
+  Shorting.insertionSort(listOfOInt: numbers);
 }
