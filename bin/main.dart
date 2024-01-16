@@ -1,6 +1,7 @@
 import 'list/list_dsa.dart';
+import 'shorting/shorting.dart';
 
 void main() {
-  List<int> numbers = [1, 2, 3, 4, 5];
-  ListDsa.subArray(listOfNumber: numbers);
+  List<int> numbers = [4, 2, 7, 1, 9];
+  Shorting.bubbleSort(listOfInt: numbers);
 }
