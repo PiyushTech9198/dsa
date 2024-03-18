@@ -1,7 +1,6 @@
-import 'list/list_dsa.dart';
-import 'shorting/shorting.dart';
+import 'helper/helper.dart';
+import 'practice_set/preactice_set_one.dart';
 
 void main() {
-  List<int> numbers = [4, 2, 7, 1, 9];
-  Shorting.insertionSort(listOfOInt: numbers);
+  PracticeOne().isPalindrome("121131").logger();
 }
